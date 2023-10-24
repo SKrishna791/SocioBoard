@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-mongoose.set("useNewUrlParser, true");
+
+//TODO: Can implement if warning appears
+//mongoose.set("useNewUrlParser", true);
 
 class Database{
 
@@ -8,7 +10,7 @@ class Database{
     }
 
     connect(){
-                    mongoose.connect("mongodb+srv://sabarikrishnaork:Sabari123@socioboardcluster.weg7iqs.mongodb.net/?retryWrites=true&w=majority")
+            mongoose.connect("mongodb+srv://sabarikrishnaork:Sabari123@socioboardcluster.weg7iqs.mongodb.net/?retryWrites=true&w=majority")
             .then(() =>{
                 console.log("Successfull");
             }

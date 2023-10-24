@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser")
-
+const User = require("../schemas/UserSchema")
 
 app.set("view engine" , "pug");
 app.set("views", "views");
@@ -28,7 +28,15 @@ router.post("/", (req, res, next) => {
    var payload = req.body;
 
    if(firstName && lastName && username && email && password){
-
+        User.findOne({
+            $or: [
+                { username: username},
+                { email: email}
+            ]
+        })
+        .then((user)=>{
+            console.log(user);
+        })
    }
 
    else {
