@@ -43,6 +43,12 @@ router.post("/", async (req, res, next) => {
 
         if(user == null){
             //No user
+            var data = req.body;
+
+            User.create(data)
+            .then((user)=>{
+                console.log(user);
+            })
         }
 
         else{
@@ -53,6 +59,7 @@ router.post("/", async (req, res, next) => {
             else{
                 payload.errorMessage = "Username already in use";
             }
+            res.status(200).render("register",payload);
         }
    }
 
